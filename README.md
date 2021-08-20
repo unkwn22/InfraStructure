@@ -21,7 +21,7 @@
 
 # Wireframe
 - Home page (Unlogged)
-![](InfraStructure/Home.jpg)
+![](InfraStructure/PIC/Home.jpg)
 
 # API table
 | NAME      | METHOD   |   REQUEST | RESPONSE | BODY | DESCRIPTION   |
