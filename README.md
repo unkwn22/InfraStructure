@@ -37,6 +37,6 @@
 # Database Relations
 
 ## Timeline
-| DATE      | PROCEDURE                                                    |
+| DATE      | PROCEDURE LOG                                                |
 | ---------- | ------------------------------------------------------------ |
 | 2021.08.20 | 1. Planned project </br> 2. Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> 3. Planned out API table </br> 4. Drew Database relations |
