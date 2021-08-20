@@ -26,5 +26,6 @@
 # Database Relations
 
 ## Timeline
+| Date      | Procedures                                                    |
 | ---------- | ------------------------------------------------------------ |
 | 2021.08.20 | Planned project, Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages <br/> to be developed after finishing main back-end goals, Planned out API Chart, Drew Database relations |
