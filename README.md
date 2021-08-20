@@ -1,4 +1,5 @@
 # InfraStructure
+- Blog/Guides : https://www.notion.so/InfraStructure-project-7bb46d48d6e84cbaaa989db6f7d28183
 
 # Project introduction
 - This project isn't unique, it's going to be a simple project that has an User entity with user information in datatbase.
