@@ -41,7 +41,7 @@
 | delete post | DELETE | /api/deletePost | Success: 200 Bad: 400 | { userId </br> postId } | dependant if its a User or Admin |
 
 # Database Relations
-![](InfraStructure/PIC/relations.jpg)
+![](InfraStructure/PIC/relations.JPG)
 
 ## Timeline
 | DATE      | PROCEDURE LOG                                                |
