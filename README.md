@@ -19,4 +19,6 @@
 - Will be done in 2 weeks
 
 
-# Wireframe, database relations table
+# Wireframe
+
+# Database Relations
