@@ -21,11 +21,15 @@
 
 # Wireframe
 
-# API chart
+# API table
+
+| NAME      | METHOD   |   REQUEST | RESPONSE | DESCRIPTION   |
+| ---------- | ---------- |---------- |---------- |---------- |
+| create user | POST | /api/user | Success: 200 Bad: 400 | |
 
 # Database Relations
 
 ## Timeline
-| Date      | Procedures                                                    |
+| DATE      | PROCEDURE                                                    |
 | ---------- | ------------------------------------------------------------ |
-| 2021.08.20 | Planned project </br> Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> Planned out API Chart </br> Drew Database relations |
+| 2021.08.20 | Planned project </br> Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> Planned out API table </br> Drew Database relations |
