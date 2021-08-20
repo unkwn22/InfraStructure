@@ -18,10 +18,15 @@
 - Understanding everything that is needed in order to become a web developer
 - Will be done in 2 weeks
 
-
 # Wireframe
 - Home page (Unlogged)
 ![](InfraStructure/PIC/HOME.jpg)
+- Home page (logged)
+![](InfraStructure/PIC/USER.jpg)
+- User page
+![](InfraStructure/PIC/MYPAGE.jpg)
+- ADMIN page
+![](InfraStructure/PIC/ADMIN.jpg)
 
 # API table
 | NAME      | METHOD   |   REQUEST | RESPONSE | BODY | DESCRIPTION   |
@@ -35,8 +40,8 @@
 | edit post | PUT | /api/editPost | Success: 200 Bad: 400 | { userId </br> postId } | |
 | delete post | DELETE | /api/deletePost | Success: 200 Bad: 400 | { userId </br> postId } | dependant if its a User or Admin |
 
-
 # Database Relations
+![](InfraStructure/PIC/relations.jpg)
 
 ## Timeline
 | DATE      | PROCEDURE LOG                                                |
