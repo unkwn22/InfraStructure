@@ -23,9 +23,15 @@
 
 # API table
 
-| NAME      | METHOD   |   REQUEST | RESPONSE | DESCRIPTION   |
-| ---------- | ---------- |---------- |---------- |---------- |
-| create user | POST | /api/user | Success: 200 Bad: 400 | |
+| NAME      | METHOD   |   REQUEST | RESPONSE | BODY | DESCRIPTION   |
+| ---------- | ---------- |---------- |---------- |---------- | ---------- |
+| create user | POST | /api/user | Success: 200 Bad: 400 | { username </br> password </br> email </br> } | |
+| get user | GET | client: /api/user admin: /admin/user | |Success: 200 Bad: 404 / 400 | dependant on existing users |
+| edit user | PUT | /api/user | Success: 200 Bad: 400 | ||
+| delete user | DELETE | /api/user | Success: 200 Bad: 500 | Dependant if its a User or Admin |
+| create post| POST | /api/createPost | Success: 200 ||
+| get post | POST | /api/getPost | Success: 200||
+
 
 # Database Relations
 
