@@ -25,7 +25,7 @@
 | NAME      | METHOD   |   REQUEST | RESPONSE | BODY | DESCRIPTION   |
 | ---------- | ---------- |---------- |---------- |---------- | ---------- |
 | create user | POST | /api/user | Success: 200 Bad: 400 | { username </br> password </br> email } </br> | |
-| get user | GET | client: /api/user | Success: 200 Bad: 404 / 400 | | dependant on existing users |
+| get user | GET | /api/user | Success: 200 Bad: 404 / 400 | | dependant on existing users |
 | edit user | PUT | /api/user | Success: 200 Bad: 400 | { password } </br> { email } </br> ||
 | delete user | DELETE | /api/user | Success: 200 Bad: 500 | { userId } </br> or </br> { username } | Dependant if its a User or Admin |
 | create post| POST | /api/createPost | Success: 200 | { userId </br> postId </br> postContent </br> postCount }| |
