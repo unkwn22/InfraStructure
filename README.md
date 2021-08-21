@@ -8,6 +8,7 @@
 - Develop Environment: Jdk 1.8.0_301-b09
 - Framework: Spring-boot 2.5.4
   - Dependencies: Spring Security, Spring Jpa, Spring H2, Spring Web, Lombok, mySql
+  - Plug-in/Add-on: Yaml Editor 1.8.0
 
 # Project introduction
 - This project isn't unique, it's going to be a simple project that has an User entity with user information in datatbase.
