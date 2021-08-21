@@ -7,7 +7,7 @@
   - Database Relations table: draw.io
 - Develop Environment: Jdk 1.8.0_301-b09
 - Framework: Spring-boot 2.5.4
-  - Dependencies: Spring Security, Spring Jpa, Spring H2, Spring Web, Lombok, mySql, Spring Validation
+  - Dependencies: Spring Security, Spring Jpa, Spring H2, Spring Web, Lombok, mySql, Spring Validation, JUnit5 (Jupiter API/Engine : 5.8.0-RC1)
   - Plug-in/Add-on: Yaml Editor 1.8.0
 
 # Project introduction
