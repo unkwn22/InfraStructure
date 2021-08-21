@@ -1,6 +1,14 @@
 # InfraStructure
 - Blog/Guides : https://www.notion.so/InfraStructure-project-7bb46d48d6e84cbaaa989db6f7d28183
 
+# Tech Stack
+- Planning:
+  - Wireframe: Adobe CS6
+  - Database Relations table: draw.io
+- Develop Environment: Jdk 1.8.0_301-b09
+- Framework: Spring-boot 2.5.4
+  - Dependencies: Spring Security, Spring Jpa, Spring H2, Spring Web, Lombok
+
 # Project introduction
 - This project isn't unique, it's going to be a simple project that has an User entity with user information in datatbase.
 - A CRUD mechanism with one to many database structure
@@ -48,3 +56,4 @@
 | DATE      | PROCEDURE LOG                                                |
 | ---------- | ------------------------------------------------------------ |
 | 2021.08.20 | 1. Planned project </br> 2. Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> 3. Planned out API table </br> 4. Drew Database relations </br> 5. pushed Spring project |
+| 2021.08.21 | 1. Filled out Tech stack in readMe </br> |
