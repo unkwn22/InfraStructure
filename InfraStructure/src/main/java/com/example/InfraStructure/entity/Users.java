@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
+import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.entity.Time.TimeEntity;
 
 import lombok.Builder;
@@ -40,8 +41,19 @@ public class Users extends TimeEntity {
 	@Builder.Default
 	List<Post> posts = new ArrayList<>();
 	
+	private final String authentication = "jason272k";
+	
 	public void updateUser() {
 		
+	}
+	
+	public void authenticateUser(UserRequestDto userRequestDto) {
+		System.out.println(userRequestDto.getRole_password());
+		if(userRequestDto.equals(authentication)) {
+			this.roles = "ADMIN";
+		}else {
+			this.roles = "USER";
+		}
 	}
 	
 }
