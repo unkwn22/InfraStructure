@@ -21,13 +21,8 @@ public class UserService {
 	
 	public Users createUser(UserRequestDto userRequestDto) {
 		
-		Users user = Users.builder()
-				.username(userRequestDto.getUsername())
-				.password(userRequestDto.getPassword())
-				.email(userRequestDto.getEmail())
-				.build();
-		
-		user.authenticateUser(userRequestDto);
+		Users user = new Users(userRequestDto.getUsername(), userRequestDto.getPassword()
+				, userRequestDto.getEmail(), userRequestDto.getRole_password());
 		
 		return userRepository.save(user);
 	}

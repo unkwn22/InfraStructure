@@ -16,7 +16,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Builder
 public class Users extends TimeEntity {
 	
 	@Id
@@ -43,17 +42,28 @@ public class Users extends TimeEntity {
 	
 	private final String authentication = "jason272k";
 	
-	public void updateUser() {
-		
-	}
-	
-	public void authenticateUser(UserRequestDto userRequestDto) {
-		System.out.println(userRequestDto.getRole_password());
-		if(userRequestDto.equals(authentication)) {
+	public Users(String username, String password, String email, String role_password) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		if(password.equals(authentication)) {
 			this.roles = "ADMIN";
 		}else {
 			this.roles = "USER";
 		}
+	} 
+	
+	public void updateUser() {
+		
+	}
+	
+	public String authenticateUser(String password) {
+		if(password.equals(authentication)) {
+			this.roles = "ADMIN";
+		}else {
+			this.roles = "USER";
+		}
+		return this.roles;
 	}
 	
 }
