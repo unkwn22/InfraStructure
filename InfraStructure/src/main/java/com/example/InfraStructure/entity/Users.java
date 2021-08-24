@@ -46,12 +46,17 @@ public class Users extends TimeEntity {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		if(password.equals(authentication)) {
+		
+		if(role_password.equals(authentication)) {
 			this.roles = "ADMIN";
 		}else {
 			this.roles = "USER";
 		}
 	} 
+	
+	public Users() {
+		
+	}
 	
 	public void updateUser() {
 		
