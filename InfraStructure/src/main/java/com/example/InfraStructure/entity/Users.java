@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
+import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.entity.Time.TimeEntity;
 
 import lombok.Builder;
@@ -15,7 +16,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Builder
 public class Users extends TimeEntity {
 	
 	@Id
@@ -40,8 +40,30 @@ public class Users extends TimeEntity {
 	@Builder.Default
 	List<Post> posts = new ArrayList<>();
 	
+	private final String authentication = "jason272k";
+	
+	public Users(String username, String password, String email, String role_password) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		if(password.equals(authentication)) {
+			this.roles = "ADMIN";
+		}else {
+			this.roles = "USER";
+		}
+	} 
+	
 	public void updateUser() {
 		
+	}
+	
+	public String authenticateUser(String password) {
+		if(password.equals(authentication)) {
+			this.roles = "ADMIN";
+		}else {
+			this.roles = "USER";
+		}
+		return this.roles;
 	}
 	
 }
