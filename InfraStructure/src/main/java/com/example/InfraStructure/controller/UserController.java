@@ -1,6 +1,6 @@
 package com.example.InfraStructure.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,15 +13,16 @@ import com.example.InfraStructure.service.UserService;
 
 @RestController
 public class UserController {
+	private final UserService userService;
 	
-	@Autowired
-	UserService userService;
+	public UserController(@Lazy UserService userService) {
+		this.userService = userService;
+	}
 	
 	@PostMapping("api/user")
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto){
-        Users users = userService.createUser(userRequestDto);
-        UserResponseDto userResponseDto = new UserResponseDto(users);
-        return ResponseEntity.ok().body(userResponseDto);
-    }
-	
+	public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto) {
+		Users user = userService.createUser(userRequestDto);
+		UserResponseDto reponse = new UserResponseDto(user);
+		return ResponseEntity.ok().body(reponse);
+	}
 }

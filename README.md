@@ -41,14 +41,14 @@
 # API table
 | NAME      | METHOD   |   REQUEST | RESPONSE | BODY | DESCRIPTION   |
 | ---------- | ---------- |---------- |---------- |---------- | ---------- |
-| create user | POST | /api/user | Success: 200 Bad: 400 | { username </br> password </br> email } </br> | |
-| get user | GET | /api/user | Success: 200 Bad: 404 / 400 | | dependant on existing users |
-| edit user | PUT | /api/user | Success: 200 Bad: 400 | { password } </br> { email } </br> ||
-| delete user | DELETE | /api/user | Success: 200 Bad: 500 | { userId } </br> or </br> { username } | dependant if its a User or Admin |
-| create post| POST | /api/createPost | Success: 200 | { userId </br> postId </br> postContent </br> postCount }| |
-| get post | GET | /api/getPost | Success: 200 Bad: 404 / 400  | | dependant on existing users |
-| edit post | PUT | /api/editPost | Success: 200 Bad: 400 | { userId </br> postId } | |
-| delete post | DELETE | /api/deletePost | Success: 200 Bad: 400 | { userId </br> postId } | dependant if its a User or Admin |
+| create user | POST | api/user | Success: 200 Bad: 400 | { username </br> password </br> email } </br> | |
+| get user | GET | api/user | Success: 200 Bad: 404 / 400 | | dependant on existing users |
+| edit user | PUT | api/user | Success: 200 Bad: 400 | { password } </br> { email } </br> ||
+| delete user | DELETE | api/user | Success: 200 Bad: 500 | { userId } </br> or </br> { username } | dependant if its a User or Admin |
+| create post| POST | api/createPost | Success: 200 | { userId </br> postId </br> postContent </br> postCount }| |
+| get post | GET | api/getPost | Success: 200 Bad: 404 / 400  | | dependant on existing users |
+| edit post | PUT | api/editPost | Success: 200 Bad: 400 | { userId </br> postId } | |
+| delete post | DELETE | api/deletePost | Success: 200 Bad: 400 | { userId </br> postId } | dependant if its a User or Admin |
 
 # Database Relations
 ![](InfraStructure/PIC/relations2.JPG)
@@ -58,3 +58,4 @@
 | ---------- | ------------------------------------------------------------ |
 | 2021.08.20 | 1. Planned project </br> 2. Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> 3. Planned out API table </br> 4. Drew Database relations </br> 5. pushed Spring project |
 | 2021.08.21 | 1. Filled out Tech stack in readMe </br> 2. implemented Validation, JDBC dependencies </br> 3. Created Controller, Repository, SecurityConfiguration for h2 database testing </br> 4. implemented JUnit Jupiter API and Engine for testing purposes </br> 5. Database relations needed changes </br> 6. Created Timestamp and CreatedBy class </br> 7. Mapped Entity classes </br> 8. Created users request/response dto (In progress) </br> 9. created user Service (In progress) |
+| 2021.08.23 | 1. Controller, Repository, UserService refactored for userCreate </br> 2. finished userDtos </br> 3. Entity Users class added authentication method </br>|
