@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 
+import com.example.InfraStructure.dto.UserUpdateRequestDto;
 import com.example.InfraStructure.entity.Time.TimeEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -65,8 +65,9 @@ public class Users extends TimeEntity {
 		
 	}
 	
-	public void updateUser() {
-		
+	public void updateUser(UserUpdateRequestDto userUpdateRequestDto) {
+		this.password = userUpdateRequestDto.getChange_pass();
+		this.email = userUpdateRequestDto.getChange_email();
 	}
 	
 	public String authenticateUser(String password) {

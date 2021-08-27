@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
+import com.example.InfraStructure.dto.UserUpdateRequestDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.exception.ApiRequestException;
 import com.example.InfraStructure.repository.UserRepository;
@@ -56,5 +57,20 @@ public class UserService {
 		return userResponseList;
 	}
 	
+	public Users updateUser(UserUpdateRequestDto userUpdateRequestDto) {
+		Users user;
+		if(!userRepository.existsByUsername(userUpdateRequestDto.getUsername())) {
+			throw new ApiRequestException("User does not exist");
+		}else {
+			user = userRepository.findByUsername(userUpdateRequestDto.getUsername());
+		}
+		
+		if(!userUpdateRequestDto.getPrevious_pass().equals(user.getPassword())) {
+			throw new ApiRequestException("Previous password does not exist");
+		}else {
+			user.updateUser(userUpdateRequestDto);
+		}
+		return userRepository.save(user);
+	}
 	
 }

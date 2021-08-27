@@ -6,12 +6,14 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
+import com.example.InfraStructure.dto.UserUpdateRequestDto;
 import com.example.InfraStructure.dto.UsernameRequestDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.service.UserService;
@@ -43,5 +45,13 @@ public class UserController {
 		List<UserResponseDto> userLists = userService.findAll();
 		return ResponseEntity.ok().body(userLists);
 	}
+	
+	@PutMapping("/api/user")
+	public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserUpdateRequestDto userUpdateRequestDto){
+		Users user = userService.updateUser(userUpdateRequestDto);
+		UserResponseDto reponse = new UserResponseDto(user);
+		return ResponseEntity.ok().body(reponse);
+	}
+	
 	
 }
