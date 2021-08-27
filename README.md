@@ -44,7 +44,7 @@
 | create user | POST | /api/signup | Success: 200 Bad: 400 | { username </br> password </br> email } </br> | ||
 | get user | POST | /api/user/ | Success: 200 Bad: 404 / 400 | { username } || dependant on existing users |
 | get all users | GET | /api/users | Success: 200 Bad: 404 / 400 | || dependant on existing users |
-| edit user | PUT | /api/user/{id} | Success: 200 Bad: 400 ||||
+| edit user | PUT | /api/user/{id} | Success: 200 Bad: 400 ||{id}||
 | delete user | DELETE | /api/user | Success: 200 Bad: 500 ||| dependant if its a User or Admin |
 | create post| POST | /api/createPost | Success: 200 | { userId </br> postId </br> postContent </br> postCount }|| |
 | get post | GET | /api/getPost | Success: 200 Bad: 404 / 400  | || dependant on existing users |
