@@ -1,13 +1,19 @@
 package com.example.InfraStructure.entity;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 
-import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.entity.Time.TimeEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +46,7 @@ public class Users extends TimeEntity {
 	@Builder.Default
 	List<Post> posts = new ArrayList<>();
 	
+	@Transient
 	private final String authentication = "jason272k";
 	
 	public Users(String username, String password, String email, String role_password) {

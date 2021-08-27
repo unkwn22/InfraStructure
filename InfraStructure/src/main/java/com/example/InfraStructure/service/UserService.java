@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.entity.Users;
+import com.example.InfraStructure.exception.ApiRequestException;
 import com.example.InfraStructure.repository.UserRepository;
 
 @Service
@@ -20,10 +21,21 @@ public class UserService {
 	}
 	
 	public Users createUser(UserRequestDto userRequestDto) {
-		
 		Users user = new Users(userRequestDto.getUsername(), userRequestDto.getPassword()
 				, userRequestDto.getEmail(), userRequestDto.getRole_password());
 		
 		return userRepository.save(user);
 	}
+	
+	public Users findOne(String username) {
+		Users user;
+		if(!userRepository.existsByUsername(username)) {
+			throw new ApiRequestException("User does not exist");
+		}else {
+			user = userRepository.findByUsername(username);
+		}
+		return user;
+	}
+	
+	
 }
