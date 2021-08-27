@@ -60,5 +60,5 @@
 | 2021.08.20 | 1. Planned project </br> 2. Drew wireframe but since this project is going to be a static website I don't have time to make static webpages. Static webpages to be developed after finishing main back-end goals </br> 3. Planned out API table </br> 4. Drew Database relations </br> 5. pushed Spring project |
 | 2021.08.21 | 1. Filled out Tech stack in readMe </br> 2. implemented Validation, JDBC dependencies </br> 3. Created Controller, Repository, SecurityConfiguration for h2 database testing </br> 4. implemented JUnit Jupiter API and Engine for testing purposes </br> 5. Database relations needed changes </br> 6. Created Timestamp and CreatedBy class </br> 7. Mapped Entity classes </br> 8. Created users request/response dto (In progress) </br> 9. created user Service (In progress) |
 | 2021.08.23 | 1. Controller, Repository, UserService refactored for userCreate </br> 2. finished userDtos </br> 3. Entity Users class added authentication method |
-| 2021.08.24 | 1. UserController Test progressed </br> |
-| 2021.08.27 | 1. Refactored api get users table </br> |
+| 2021.08.24 | 1. UserController Test progressed </br> 2. Created user signup api |
+| 2021.08.27 | 1. Refactored api get users table </br> 2. Created user getOne api </br> |
