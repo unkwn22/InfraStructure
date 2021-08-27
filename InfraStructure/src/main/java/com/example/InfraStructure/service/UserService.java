@@ -1,11 +1,15 @@
 package com.example.InfraStructure.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.example.InfraStructure.dto.UserRequestDto;
+import com.example.InfraStructure.dto.UserResponseDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.exception.ApiRequestException;
 import com.example.InfraStructure.repository.UserRepository;
@@ -35,6 +39,21 @@ public class UserService {
 			user = userRepository.findByUsername(username);
 		}
 		return user;
+	}
+	
+	public List<UserResponseDto> findAll(){
+		List<Users> userList;
+		List<UserResponseDto> userResponseList = new ArrayList<>();
+		if(userRepository.count() == 0) {
+			throw new ApiRequestException("There are no users");
+		}else {
+			userList = userRepository.findAll();
+			for(Users user : userList) {
+				UserResponseDto userResponseDto = new UserResponseDto(user);
+				userResponseList.add(userResponseDto);
+			}
+		}
+		return userResponseList;
 	}
 	
 	

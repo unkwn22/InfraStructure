@@ -38,4 +38,10 @@ public class UserController {
 		return ResponseEntity.ok().body(reponse);
 	}
 	
+	@GetMapping("/api/user")
+	public ResponseEntity<List<UserResponseDto>> findAll(){
+		List<UserResponseDto> userLists = userService.findAll();
+		return ResponseEntity.ok().body(userLists);
+	}
+	
 }
