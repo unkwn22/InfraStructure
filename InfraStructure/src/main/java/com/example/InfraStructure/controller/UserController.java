@@ -3,18 +3,16 @@ package com.example.InfraStructure.controller;
 import java.util.List;
 
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import com.example.InfraStructure.dto.UserDeleteRequestDto;
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
 import com.example.InfraStructure.dto.UserUpdateRequestDto;
 import com.example.InfraStructure.dto.UsernameRequestDto;
+import com.example.InfraStructure.entity.Message;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.service.UserService;
 
@@ -51,6 +49,16 @@ public class UserController {
 		Users user = userService.updateUser(userUpdateRequestDto);
 		UserResponseDto reponse = new UserResponseDto(user);
 		return ResponseEntity.ok().body(reponse);
+	}
+	
+	@DeleteMapping("/api/user")
+	public ResponseEntity<Message> deleteUser(@RequestBody UserDeleteRequestDto userDeleteRequestDto){
+		String username = userService.deleteUser(userDeleteRequestDto);
+		Message message = Message.builder()
+				.message("user: " + username + " has been delete successfully")
+				.build();
+		
+		return new ResponseEntity<Message>(message, HttpStatus.OK);
 	}
 	
 	

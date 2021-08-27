@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.example.InfraStructure.dto.UserDeleteRequestDto;
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
 import com.example.InfraStructure.dto.UserUpdateRequestDto;
@@ -28,7 +29,6 @@ public class UserService {
 	public Users createUser(UserRequestDto userRequestDto) {
 		Users user = new Users(userRequestDto.getUsername(), userRequestDto.getPassword()
 				, userRequestDto.getEmail(), userRequestDto.getRole_password());
-		
 		return userRepository.save(user);
 	}
 	
@@ -66,11 +66,29 @@ public class UserService {
 		}
 		
 		if(!userUpdateRequestDto.getPrevious_pass().equals(user.getPassword())) {
-			throw new ApiRequestException("Previous password does not exist");
+			throw new ApiRequestException("Previous password does not match");
 		}else {
 			user.updateUser(userUpdateRequestDto);
 		}
 		return userRepository.save(user);
+	}
+	
+	public String deleteUser(UserDeleteRequestDto userDeleteRequestDto) {
+		Users user;
+		String username;
+		if(!userRepository.existsByUsername(userDeleteRequestDto.getUsername())) {
+			throw new ApiRequestException("User does not exist");
+		}else {
+			user = userRepository.findByUsername(userDeleteRequestDto.getUsername());
+			username = user.getUsername();
+		}
+		if(!userDeleteRequestDto.getPassword().equals(user.getPassword())) {
+			throw new ApiRequestException("Previous password does not match");
+		}else {
+			userRepository.delete(user);
+		}
+		
+		return username;
 	}
 	
 }

@@ -54,8 +54,6 @@ class UserControllerTest {
 		userRepository.deleteAll();
 	}
 	
-	
-	
 	@DisplayName("Checking roles - input admin password")
 	@Test
 	void validateAdmin() throws Exception {
