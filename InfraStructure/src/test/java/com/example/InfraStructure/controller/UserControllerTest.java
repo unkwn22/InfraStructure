@@ -1,8 +1,7 @@
 package com.example.InfraStructure.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -20,6 +19,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
+import com.example.InfraStructure.dto.UserUpdateRequestDto;
 import com.example.InfraStructure.dto.UsernameRequestDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.repository.UserRepository;
@@ -56,6 +56,30 @@ class UserControllerTest {
 	@AfterEach
 	void tearDown() {
 		userRepository.deleteAll();
+	}
+	
+	@DisplayName("Update user - Normal input")
+	@Test
+	void updateUser() throws Exception {
+		String username = "lsjc129111";
+		String password = "1234";
+		String change_password ="12345";
+		String change_email = "12345@naver.com";
+		
+		UserUpdateRequestDto userUpdate = new UserUpdateRequestDto(username, password, change_password, change_email);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String userInfo = objectMapper.writeValueAsString(userUpdate);
+		
+		mockMvc.perform(put("/api/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(userInfo)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+		
+		Users user = userRepository.findByUsername(username);
+		assertEquals(change_password, user.getPassword());
 	}
 	
 	@DisplayName("Get user - Specific")
