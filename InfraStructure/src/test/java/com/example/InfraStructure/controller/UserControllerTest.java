@@ -1,8 +1,9 @@
 package com.example.InfraStructure.controller;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,21 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.TestExecutionEvent;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
 import com.example.InfraStructure.dto.UserRequestDto;
+import com.example.InfraStructure.dto.UserResponseDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.repository.UserRepository;
 import com.example.InfraStructure.service.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -43,15 +41,43 @@ class UserControllerTest {
 	@Autowired
 	MockMvc mockMvc;
 	
-	
 	@BeforeEach
 	void setup() {
-		
+		for(int i = 0; i < 3; i++) {
+			String username = "lsjc12911" + i;
+			String password = "1234";
+			String email = "1234@naver.com";
+			String role_pass = "";
+			Users user = new Users(username, password, email, role_pass);
+			userRepository.save(user);
+		}
 	}
 
 	@AfterEach
 	void tearDown() {
 		userRepository.deleteAll();
+	}
+	
+	@DisplayName("Get users - All")
+	@Test
+	void getAllUsers() throws Exception {
+
+        List<Users> userList = userRepository.findAll();
+
+        MvcResult mvcResult = mockMvc.perform(get("/api/user"))
+                .andExpect(status().isOk())
+                .andReturn();
+        
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Users> userReturnedList = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Users>>() {});
+        
+        assertEquals(userList.size(),userReturnedList.size());
+
+        List<Users> found = userRepository.findAll();
+
+        for(int i = 0; i < found.size(); i++){
+            assertEquals(userReturnedList.get(i).getUsername(), found.get(i).getUsername());
+        }
 	}
 	
 	@DisplayName("Checking roles - input admin password")
@@ -67,7 +93,7 @@ class UserControllerTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String userInfo = objectMapper.writeValueAsString(userRequestDto);
 		
-		mockMvc.perform(post("/api/user")
+		mockMvc.perform(post("/api/signup")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(userInfo)
                 .accept(MediaType.APPLICATION_JSON))
@@ -91,7 +117,7 @@ class UserControllerTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String userInfo = objectMapper.writeValueAsString(userRequestDto);
 		
-		mockMvc.perform(post("/api/user")
+		mockMvc.perform(post("/api/signup")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(userInfo)
                 .accept(MediaType.APPLICATION_JSON))
@@ -117,7 +143,7 @@ class UserControllerTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String userInfo = objectMapper.writeValueAsString(userRequestDto);
 		
-		mockMvc.perform(post("/api/user")
+		mockMvc.perform(post("/api/signup")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(userInfo)
                 .accept(MediaType.APPLICATION_JSON))
