@@ -13,4 +13,13 @@ public class UserDeleteRequestDto {
 	private String username;
 	@NotNull
 	private String password;
+	
+	public UserDeleteRequestDto() {
+		
+	}
+	
+	public UserDeleteRequestDto(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 }

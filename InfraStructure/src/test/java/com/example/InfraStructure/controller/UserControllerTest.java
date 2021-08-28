@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import com.example.InfraStructure.dto.UserDeleteRequestDto;
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
 import com.example.InfraStructure.dto.UserUpdateRequestDto;
@@ -26,7 +27,6 @@ import com.example.InfraStructure.repository.UserRepository;
 import com.example.InfraStructure.service.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -57,6 +57,28 @@ class UserControllerTest {
 	void tearDown() {
 		userRepository.deleteAll();
 	}
+	
+	@DisplayName("Delete user - Normal input")
+	@Test
+	void deleteUser() throws Exception {
+		String username = "lsjc129111";
+		String password = "1234";
+		
+		UserDeleteRequestDto deleteRequest = new UserDeleteRequestDto(username, password);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String userInfo = objectMapper.writeValueAsString(deleteRequest);
+		
+		mockMvc.perform(delete("/api/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(userInfo)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+		
+		assertEquals(false, (userRepository.existsByUsername(username)));
+	}
+	
 	
 	@DisplayName("Update user - Normal input")
 	@Test
