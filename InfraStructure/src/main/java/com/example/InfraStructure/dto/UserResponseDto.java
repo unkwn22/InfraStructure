@@ -21,4 +21,8 @@ public class UserResponseDto {
 		this.email = user.getEmail();
 		this.roles = user.getRoles();
 	}
+	
+	public UserResponseDto() {
+		
+	}
 }

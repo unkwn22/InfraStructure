@@ -1,9 +1,12 @@
 package com.example.InfraStructure.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.List;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,18 +17,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 
 import com.example.InfraStructure.dto.UserRequestDto;
 import com.example.InfraStructure.dto.UserResponseDto;
+import com.example.InfraStructure.dto.UsernameRequestDto;
 import com.example.InfraStructure.entity.Users;
 import com.example.InfraStructure.repository.UserRepository;
 import com.example.InfraStructure.service.UserService;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @SpringBootTest
@@ -56,6 +56,30 @@ class UserControllerTest {
 	@AfterEach
 	void tearDown() {
 		userRepository.deleteAll();
+	}
+	
+	@DisplayName("Get user - Specific")
+	@Test
+	void getOneUser() throws Exception {
+		String username = "lsjc129111";
+		UsernameRequestDto usernameRequestDto = new UsernameRequestDto();
+		usernameRequestDto.setUsername(username);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String userInfo = objectMapper.writeValueAsString(usernameRequestDto);
+		
+		 MvcResult mvcResult = mockMvc.perform(post("/api/user")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(userInfo)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+		
+		UserResponseDto userResponseDto = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), UserResponseDto.class);
+		
+		Users user = userRepository.findByUsername(username);
+		
+		assertEquals(userResponseDto.getUsername(), user.getUsername());
 	}
 	
 	@DisplayName("Get users - All")
