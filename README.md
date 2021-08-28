@@ -62,4 +62,4 @@
 | 2021.08.23 | 1. Controller, Repository, UserService refactored for userCreate </br> 2. finished userDtos </br> 3. Entity Users class added authentication method |
 | 2021.08.24 | 1. UserController Test progressed </br> 2. Created user signup api |
 | 2021.08.27 | 1. Refactored api get users table </br> 2. Created user getOne api </br> 3. Created user getAll api </br> 4. Created updateUser Api </br> 5. Created userDelete Api |
-| 2021.08.28 | 1. getAllUsers test case passed </br> 2. get specific user api test case passed|
+| 2021.08.28 | 1. getAllUsers test case passed </br> 2. get specific user api test case passed </br> 3. update user api test case passed |
