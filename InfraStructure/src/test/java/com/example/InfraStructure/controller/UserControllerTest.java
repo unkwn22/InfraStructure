@@ -57,6 +57,12 @@ class UserControllerTest {
 	void tearDown() {
 		userRepository.deleteAll();
 	}
+	@DisplayName("Travis test")
+	@Test
+	void travisTest() {
+		System.out.println("hello world");
+	}
+	
 	
 	@DisplayName("Delete user - Normal input")
 	@Test
