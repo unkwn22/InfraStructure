@@ -61,6 +61,7 @@ class UserControllerTest {
 	@Test
 	void travisTest() {
 		System.out.println("hello world");
+		System.out.println("hello world2");
 	}
 	
 	
