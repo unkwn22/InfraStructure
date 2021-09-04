@@ -67,3 +67,5 @@
 | 2021.08.24 | 1. UserController Test progressed </br> 2. Created user signup api |
 | 2021.08.27 | 1. Refactored api get users table </br> 2. Created user getOne api </br> 3. Created user getAll api </br> 4. Created updateUser Api </br> 5. Created userDelete Api |
 | 2021.08.28 | 1. getAllUsers test case passed </br> 2. get specific user api test case passed </br> 3. update user api test case passed </br> 4. Delete user api test case passed |
+| 2021.09.02 | 1. Connected mySQL with Spring boot </br>|
+| 2021.09.03 | 1. Connected with Travis CI but facing UTF-8 problems </br> 2. solved all Travis problems </br> 3. Created RDS Instance and connected it to project |
