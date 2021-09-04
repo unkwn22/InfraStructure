@@ -1,0 +1,32 @@
+#언어 버젼 설정
+language: java
+jdk:
+  - openjdk8
+
+#이것으로 고군 분투 했으나 뭔가 script가 더 늦게 실행 되는것 같아 주석 처리하고
+#before_script: cd InfraStructure/InfraStructure
+
+#여기다 cd InfraStructure 을 옮겼다
+before_install:
+  - cd InfraStructure
+  - chmod +x gradlew
+
+#대상 브랜치를 설정
+branches:
+  only:
+    - main
+
+#travis 디렉토리
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+#실행할 스크립트
+script: "./gradlew clean build"
+
+#알람 받을 이메일 설정
+notifications:
+  email:
+    recipients:
+      - chlwotjd1997@gmail.com
