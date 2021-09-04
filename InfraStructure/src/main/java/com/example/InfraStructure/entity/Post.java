@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.example.InfraStructure.entity.Time.ByEntity;
 
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@Table(name = "post_table")
 public class Post extends ByEntity {
 	
 	@Id
